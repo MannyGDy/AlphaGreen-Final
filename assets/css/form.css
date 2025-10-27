@@ -1,0 +1,46 @@
+.form-input {
+    position: relative;
+    margin-bottom: 20px;
+  }
+  
+  .form-input input,
+  .form-input textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    background: none;
+  }
+  
+  .cf-label {
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    transform: translateY(-50%);
+    font-size: 14px;
+    color: #888;
+    pointer-events: none;
+    transition: 0.2s ease;
+    background: #fff; /* keeps text readable */
+    padding: 0 4px;
+  }
+  
+  .form-input input:focus + .cf-label,
+  .form-input textarea:focus + .cf-label,
+  .form-input input:not(:placeholder-shown) + .cf-label,
+  .form-input textarea:not(:placeholder-shown) + .cf-label {
+    top: -8px;
+    left: 8px;
+    font-size: 12px;
+    color: #333;
+  }
+  /* Floating label trigger for inputs/textareas with .filled */
+.form-input.filled .cf-label {
+    top: -10px;
+    left: 8px;
+    font-size: 12px;
+    color: #333;
+    background: #fff;
+    padding: 0 4px;
+  }
+  
