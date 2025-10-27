@@ -391,7 +391,7 @@
                 <div class="col-lg-6">
                   <div class="contact-form wow fadeInUp" data-wow-delay=".1s">
                     <h3 class="title">Feel Free to Get in Touch or Visit our Location.</h3>
-                    <form id="contact-form" action="mailto:aderinwaleemmanuel7@gmail.com" method="post" enctype="text/plain">
+                    <form id="contact-form">
                       <div class="row">
 
                         <div class="col-sm-6">
@@ -602,7 +602,7 @@
           <div class="bg-shape-2">
             <img src="assets/images/shape/pattern-3.svg" alt="">
           </div>
-          <div class="bg-shape-4 wow fadeInUpBig" data-wow-delay=".2s">
+          <div class="bg-shape-4 wow fadeInUpBig" data-wow-delay=".1s">
             <img src="./assets/images/shape/h10-footer-shape-blur-2.svg" alt="">
           </div>
         </footer>
@@ -677,6 +677,85 @@
         font-size: 16px;
       }
     </style>
+    
+    <!-- Contact Form JavaScript -->
+    <script>
+      document.getElementById('contact-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Get form data
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const phone = document.getElementById('phone').value;
+        const service = document.getElementById('service').value;
+        const message = document.getElementById('message').value;
+        
+        // Create formatted email body
+        const emailBody = `Hello AlphaGreen Professionals LP,
+
+I hope this message finds you well. My name is ${name}, and I am reaching out to inquire about your professional services.
+
+Contact Information:
+• Email: ${email}
+• Phone: ${phone}
+
+Service Interest:
+I am particularly interested in your ${service} services and would like to learn more about how your team can assist with my business needs.
+
+Message:
+${message}
+
+I would appreciate the opportunity to discuss my requirements further and explore how AlphaGreen Professionals LP can help support my business objectives. Please feel free to contact me at your earliest convenience.
+
+Thank you for your time and consideration.
+
+Best regards,
+${name}`;
+
+        // Create mailto link with formatted content
+        const mailtoLink = `mailto:aderinwaleemmanuel7@gmail.com?subject=New Contact Form Submission - ${service}&body=${encodeURIComponent(emailBody)}`;
+        
+        // Open email client
+        window.location.href = mailtoLink;
+        
+        // Show success message
+        setTimeout(() => {
+          showSuccessMessage();
+        }, 1000);
+      });
+      
+      function showSuccessMessage() {
+        // Hide the form
+        const form = document.getElementById('contact-form');
+        if (form) {
+          form.style.display = 'none';
+        }
+        
+        // Show success message
+        var successDiv = document.createElement('div');
+        successDiv.className = 'success-message';
+        successDiv.style.cssText = `
+          background: #d4edda;
+          color: #155724;
+          padding: 20px;
+          border-radius: 8px;
+          border: 1px solid #c3e6cb;
+          margin: 20px 0;
+          text-align: center;
+          font-size: 16px;
+        `;
+        successDiv.innerHTML = `
+          <h4 style="color: #155724; margin-bottom: 10px;">Thank You!</h4>
+          <p style="margin: 0;">Your email client should have opened with a pre-filled message. Please send the email to complete your inquiry.</p>
+        `;
+        
+        // Insert success message before the form's parent container
+        const formContainer = document.querySelector('.contact-form');
+        if (formContainer) {
+          formContainer.insertBefore(successDiv, formContainer.firstChild);
+        }
+      }
+    </script>
     
 </body>
 
